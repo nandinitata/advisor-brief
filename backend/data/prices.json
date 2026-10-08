@@ -1,0 +1,57 @@
+{
+  "AAPL": {
+    "last_close": 332.89,
+    "return_1y": 0.3016,
+    "as_of": "2026-10-05"
+  },
+  "MSFT": {
+    "last_close": 525.18,
+    "return_1y": 0.0018,
+    "as_of": "2026-10-05"
+  },
+  "GOOGL": {
+    "last_close": 346.47,
+    "return_1y": 0.3871,
+    "as_of": "2026-10-05"
+  },
+  "AMZN": {
+    "last_close": 251.4,
+    "return_1y": 0.1381,
+    "as_of": "2026-10-05"
+  },
+  "NVDA": {
+    "last_close": 238.9,
+    "return_1y": 0.2907,
+    "as_of": "2026-10-05"
+  },
+  "TSLA": {
+    "last_close": 378.73,
+    "return_1y": -0.1644,
+    "as_of": "2026-10-05"
+  },
+  "JPM": {
+    "last_close": 332.38,
+    "return_1y": 0.0903,
+    "as_of": "2026-10-05"
+  },
+  "JNJ": {
+    "last_close": 252.93,
+    "return_1y": 0.3745,
+    "as_of": "2026-10-05"
+  },
+  "KO": {
+    "last_close": 86.51,
+    "return_1y": 0.3436,
+    "as_of": "2026-10-05"
+  },
+  "PG": {
+    "last_close": 145.94,
+    "return_1y": -0.0012,
+    "as_of": "2026-10-05"
+  },
+  "CVX": {
+    "last_close": 206.47,
+    "return_1y": 0.3934,
+    "as_of": "2026-10-05"
+  }
+}

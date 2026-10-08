@@ -1,0 +1,25 @@
+# python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+
+# The ingested data (Chroma store + JSON snapshots) IS committed, so the app
+# clones and runs without re-running `python ingest.py`. Only runtime-generated
+# files are ignored:
+backend/data/audit.jsonl          # append-only audit chain, written per request
+backend/data/filings/             # raw filing cache, if ever created
+
+# node
+node_modules/
+frontend/.next/
+frontend/out/
+frontend/dist/
+
+# env / secrets
+.env
+.env.local
+
+# os
+.DS_Store

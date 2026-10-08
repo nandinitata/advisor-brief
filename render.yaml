@@ -1,0 +1,27 @@
+# Render blueprint for the advisor-brief backend (the FastAPI app).
+# The React frontend deploys separately to Vercel and points at this service's
+# URL via VITE_API_URL.
+#
+# One-time setup:
+#   1. Push this repo to GitHub (done).
+#   2. In Render: New + > Blueprint > pick this repo. Render reads this file.
+#   3. Add the GROQ_API_KEY value when prompted (free key: https://console.groq.com/keys).
+#   4. Deploy. The committed Chroma store means no ingest step is needed.
+services:
+  - type: web
+    name: advisor-brief-api
+    runtime: python
+    rootDir: backend
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12.6"
+      - key: AB_LLM_PROVIDER
+        value: groq
+      - key: GROQ_API_KEY
+        sync: false          # set this secret in the Render dashboard
+      - key: AB_ALLOW_ORIGINS
+        value: "*"           # public read-only demo; tighten to your Vercel URL if you prefer

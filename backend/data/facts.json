@@ -1,0 +1,500 @@
+{
+  "AAPL": [
+    {
+      "label": "Total revenue",
+      "value": 416161000000,
+      "fiscal_year": 2025,
+      "period_end": "2025-09-27",
+      "accession": "0000320193-25-000079"
+    },
+    {
+      "label": "Net income",
+      "value": 112010000000,
+      "fiscal_year": 2025,
+      "period_end": "2025-09-27",
+      "accession": "0000320193-25-000079"
+    },
+    {
+      "label": "Total assets",
+      "value": 359241000000,
+      "fiscal_year": 2025,
+      "period_end": "2025-09-27",
+      "accession": "0000320193-25-000079"
+    },
+    {
+      "label": "Total liabilities",
+      "value": 285508000000,
+      "fiscal_year": 2025,
+      "period_end": "2025-09-27",
+      "accession": "0000320193-25-000079"
+    },
+    {
+      "label": "Shareholders' equity",
+      "value": 73733000000,
+      "fiscal_year": 2025,
+      "period_end": "2025-09-27",
+      "accession": "0000320193-25-000079"
+    },
+    {
+      "label": "R&D expense",
+      "value": 34550000000,
+      "fiscal_year": 2025,
+      "period_end": "2025-09-27",
+      "accession": "0000320193-25-000079"
+    },
+    {
+      "label": "Operating income",
+      "value": 133050000000,
+      "fiscal_year": 2025,
+      "period_end": "2025-09-27",
+      "accession": "0000320193-25-000079"
+    }
+  ],
+  "MSFT": [
+    {
+      "label": "Total revenue",
+      "value": 331839000000,
+      "fiscal_year": 2026,
+      "period_end": "2026-06-30",
+      "accession": "0001193125-26-323660"
+    },
+    {
+      "label": "Net income",
+      "value": 133749000000,
+      "fiscal_year": 2026,
+      "period_end": "2026-06-30",
+      "accession": "0001193125-26-323660"
+    },
+    {
+      "label": "Total assets",
+      "value": 758376000000,
+      "fiscal_year": 2026,
+      "period_end": "2026-06-30",
+      "accession": "0001193125-26-323660"
+    },
+    {
+      "label": "Total liabilities",
+      "value": 315989000000,
+      "fiscal_year": 2026,
+      "period_end": "2026-06-30",
+      "accession": "0001193125-26-323660"
+    },
+    {
+      "label": "Shareholders' equity",
+      "value": 442387000000,
+      "fiscal_year": 2026,
+      "period_end": "2026-06-30",
+      "accession": "0001193125-26-323660"
+    },
+    {
+      "label": "R&D expense",
+      "value": 35562000000,
+      "fiscal_year": 2026,
+      "period_end": "2026-06-30",
+      "accession": "0001193125-26-323660"
+    },
+    {
+      "label": "Operating income",
+      "value": 155237000000,
+      "fiscal_year": 2026,
+      "period_end": "2026-06-30",
+      "accession": "0001193125-26-323660"
+    }
+  ],
+  "GOOGL": [
+    {
+      "label": "Total revenue",
+      "value": 402836000000,
+      "fiscal_year": 2025,
+      "period_end": "2025-12-31",
+      "accession": "0001652044-26-000018"
+    },
+    {
+      "label": "Net income",
+      "value": 132170000000,
+      "fiscal_year": 2025,
+      "period_end": "2025-12-31",
+      "accession": "0001652044-26-000018"
+    },
+    {
+      "label": "Total assets",
+      "value": 595281000000,
+      "fiscal_year": 2025,
+      "period_end": "2025-12-31",
+      "accession": "0001652044-26-000018"
+    },
+    {
+      "label": "Total liabilities",
+      "value": 180016000000,
+      "fiscal_year": 2025,
+      "period_end": "2025-12-31",
+      "accession": "0001652044-26-000018"
+    },
+    {
+      "label": "Shareholders' equity",
+      "value": 415265000000,
+      "fiscal_year": 2025,
+      "period_end": "2025-12-31",
+      "accession": "0001652044-26-000018"
+    },
+    {
+      "label": "R&D expense",
+      "value": 61087000000,
+      "fiscal_year": 2025,
+      "period_end": "2025-12-31",
+      "accession": "0001652044-26-000018"
+    },
+    {
+      "label": "Operating income",
+      "value": 129039000000,
+      "fiscal_year": 2025,
+      "period_end": "2025-12-31",
+      "accession": "0001652044-26-000018"
+    }
+  ],
+  "AMZN": [
+    {
+      "label": "Total revenue",
+      "value": 716924000000,
+      "fiscal_year": 2025,
+      "period_end": "2025-12-31",
+      "accession": "0001018724-26-000004"
+    },
+    {
+      "label": "Net income",
+      "value": 77670000000,
+      "fiscal_year": 2025,
+      "period_end": "2025-12-31",
+      "accession": "0001018724-26-000004"
+    },
+    {
+      "label": "Total assets",
+      "value": 818042000000,
+      "fiscal_year": 2025,
+      "period_end": "2025-12-31",
+      "accession": "0001018724-26-000004"
+    },
+    {
+      "label": "Shareholders' equity",
+      "value": 411065000000,
+      "fiscal_year": 2025,
+      "period_end": "2025-12-31",
+      "accession": "0001018724-26-000004"
+    },
+    {
+      "label": "Operating income",
+      "value": 79975000000,
+      "fiscal_year": 2025,
+      "period_end": "2025-12-31",
+      "accession": "0001018724-26-000004"
+    }
+  ],
+  "NVDA": [
+    {
+      "label": "Total revenue",
+      "value": 215938000000,
+      "fiscal_year": 2026,
+      "period_end": "2026-01-25",
+      "accession": "0001045810-26-000021"
+    },
+    {
+      "label": "Net income",
+      "value": 120067000000,
+      "fiscal_year": 2026,
+      "period_end": "2026-01-25",
+      "accession": "0001045810-26-000021"
+    },
+    {
+      "label": "Total assets",
+      "value": 206803000000,
+      "fiscal_year": 2026,
+      "period_end": "2026-01-25",
+      "accession": "0001045810-26-000021"
+    },
+    {
+      "label": "Total liabilities",
+      "value": 49510000000,
+      "fiscal_year": 2026,
+      "period_end": "2026-01-25",
+      "accession": "0001045810-26-000021"
+    },
+    {
+      "label": "Shareholders' equity",
+      "value": 157293000000,
+      "fiscal_year": 2026,
+      "period_end": "2026-01-25",
+      "accession": "0001045810-26-000021"
+    },
+    {
+      "label": "R&D expense",
+      "value": 18497000000,
+      "fiscal_year": 2026,
+      "period_end": "2026-01-25",
+      "accession": "0001045810-26-000021"
+    },
+    {
+      "label": "Operating income",
+      "value": 130387000000,
+      "fiscal_year": 2026,
+      "period_end": "2026-01-25",
+      "accession": "0001045810-26-000021"
+    }
+  ],
+  "TSLA": [
+    {
+      "label": "Total revenue",
+      "value": 94827000000,
+      "fiscal_year": 2025,
+      "period_end": "2025-12-31",
+      "accession": "0001628280-26-003952"
+    },
+    {
+      "label": "Net income",
+      "value": 3794000000,
+      "fiscal_year": 2025,
+      "period_end": "2025-12-31",
+      "accession": "0001628280-26-003952"
+    },
+    {
+      "label": "Total assets",
+      "value": 137806000000,
+      "fiscal_year": 2025,
+      "period_end": "2025-12-31",
+      "accession": "0001628280-26-003952"
+    },
+    {
+      "label": "Total liabilities",
+      "value": 54941000000,
+      "fiscal_year": 2025,
+      "period_end": "2025-12-31",
+      "accession": "0001628280-26-003952"
+    },
+    {
+      "label": "Shareholders' equity",
+      "value": 82137000000,
+      "fiscal_year": 2025,
+      "period_end": "2025-12-31",
+      "accession": "0001628280-26-003952"
+    },
+    {
+      "label": "R&D expense",
+      "value": 6411000000,
+      "fiscal_year": 2025,
+      "period_end": "2025-12-31",
+      "accession": "0001628280-26-003952"
+    },
+    {
+      "label": "Operating income",
+      "value": 4355000000,
+      "fiscal_year": 2025,
+      "period_end": "2025-12-31",
+      "accession": "0001628280-26-003952"
+    }
+  ],
+  "JPM": [
+    {
+      "label": "Total revenue",
+      "value": 182447000000,
+      "fiscal_year": 2025,
+      "period_end": "2025-12-31",
+      "accession": "0001628280-26-008131"
+    },
+    {
+      "label": "Net income",
+      "value": 57048000000,
+      "fiscal_year": 2025,
+      "period_end": "2025-12-31",
+      "accession": "0001628280-26-008131"
+    },
+    {
+      "label": "Total assets",
+      "value": 4424900000000,
+      "fiscal_year": 2025,
+      "period_end": "2025-12-31",
+      "accession": "0001628280-26-008131"
+    },
+    {
+      "label": "Total liabilities",
+      "value": 4062462000000,
+      "fiscal_year": 2025,
+      "period_end": "2025-12-31",
+      "accession": "0001628280-26-008131"
+    },
+    {
+      "label": "Shareholders' equity",
+      "value": 362438000000,
+      "fiscal_year": 2025,
+      "period_end": "2025-12-31",
+      "accession": "0001628280-26-008131"
+    }
+  ],
+  "JNJ": [
+    {
+      "label": "Total revenue",
+      "value": 94193000000,
+      "fiscal_year": 2025,
+      "period_end": "2025-12-28",
+      "accession": "0000200406-26-000016"
+    },
+    {
+      "label": "Net income",
+      "value": 26804000000,
+      "fiscal_year": 2025,
+      "period_end": "2025-12-28",
+      "accession": "0000200406-26-000016"
+    },
+    {
+      "label": "Total assets",
+      "value": 199210000000,
+      "fiscal_year": 2025,
+      "period_end": "2025-12-28",
+      "accession": "0000200406-26-000016"
+    },
+    {
+      "label": "Total liabilities",
+      "value": 117666000000,
+      "fiscal_year": 2025,
+      "period_end": "2025-12-28",
+      "accession": "0000200406-26-000016"
+    },
+    {
+      "label": "R&D expense",
+      "value": 109000000,
+      "fiscal_year": 2025,
+      "period_end": "2025-12-28",
+      "accession": "0000200406-26-000016"
+    },
+    {
+      "label": "Operating income",
+      "value": 21590000000,
+      "fiscal_year": 2014,
+      "period_end": "2014-12-28",
+      "accession": "0000200406-15-000004"
+    }
+  ],
+  "KO": [
+    {
+      "label": "Total revenue",
+      "value": 47941000000,
+      "fiscal_year": 2025,
+      "period_end": "2025-12-31",
+      "accession": "0001628280-26-010047"
+    },
+    {
+      "label": "Net income",
+      "value": 13107000000,
+      "fiscal_year": 2025,
+      "period_end": "2025-12-31",
+      "accession": "0001628280-26-010047"
+    },
+    {
+      "label": "Total assets",
+      "value": 104816000000,
+      "fiscal_year": 2025,
+      "period_end": "2025-12-31",
+      "accession": "0001628280-26-010047"
+    },
+    {
+      "label": "Shareholders' equity",
+      "value": 32169000000,
+      "fiscal_year": 2025,
+      "period_end": "2025-12-31",
+      "accession": "0001628280-26-010047"
+    },
+    {
+      "label": "Operating income",
+      "value": 13762000000,
+      "fiscal_year": 2025,
+      "period_end": "2025-12-31",
+      "accession": "0001628280-26-010047"
+    }
+  ],
+  "PG": [
+    {
+      "label": "Total revenue",
+      "value": 87032000000,
+      "fiscal_year": 2026,
+      "period_end": "2026-06-30",
+      "accession": "0000080424-26-000103"
+    },
+    {
+      "label": "Net income",
+      "value": 16046000000,
+      "fiscal_year": 2026,
+      "period_end": "2026-06-30",
+      "accession": "0000080424-26-000103"
+    },
+    {
+      "label": "Total assets",
+      "value": 126521000000,
+      "fiscal_year": 2026,
+      "period_end": "2026-06-30",
+      "accession": "0000080424-26-000103"
+    },
+    {
+      "label": "Total liabilities",
+      "value": 72210000000,
+      "fiscal_year": 2026,
+      "period_end": "2026-06-30",
+      "accession": "0000080424-26-000103"
+    },
+    {
+      "label": "R&D expense",
+      "value": 2100000000,
+      "fiscal_year": 2026,
+      "period_end": "2026-06-30",
+      "accession": "0000080424-26-000103"
+    },
+    {
+      "label": "Operating income",
+      "value": 19748000000,
+      "fiscal_year": 2026,
+      "period_end": "2026-06-30",
+      "accession": "0000080424-26-000103"
+    }
+  ],
+  "CVX": [
+    {
+      "label": "Total revenue",
+      "value": 184432000000,
+      "fiscal_year": 2025,
+      "period_end": "2025-12-31",
+      "accession": "0000093410-26-000078"
+    },
+    {
+      "label": "Net income",
+      "value": 12299000000,
+      "fiscal_year": 2025,
+      "period_end": "2025-12-31",
+      "accession": "0000093410-26-000078"
+    },
+    {
+      "label": "Total assets",
+      "value": 324012000000,
+      "fiscal_year": 2025,
+      "period_end": "2025-12-31",
+      "accession": "0000093410-26-000078"
+    },
+    {
+      "label": "Total liabilities",
+      "value": 131836000000,
+      "fiscal_year": 2025,
+      "period_end": "2025-12-31",
+      "accession": "0000093410-26-000078"
+    },
+    {
+      "label": "Shareholders' equity",
+      "value": 186450000000,
+      "fiscal_year": 2025,
+      "period_end": "2025-12-31",
+      "accession": "0000093410-26-000078"
+    },
+    {
+      "label": "R&D expense",
+      "value": 427000000,
+      "fiscal_year": 2025,
+      "period_end": "2025-12-31",
+      "accession": "0000093410-26-000078"
+    }
+  ]
+}
