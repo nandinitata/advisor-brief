@@ -8,9 +8,21 @@ It runs on free, public data (SEC EDGAR, FRED, market prices) and open-weights m
 
 ---
 
+## How this came about
+
+I found the AI Engineer opening at TIFIN and liked it enough to dig into the company before I applied.
+
+I went through what was online: Vinay Nair's posts and talks, the product pages, and the job description. A few things stuck with me. TIFIN wants AI to help the advisor, not take over from them, so the AI does the prep work and the advisor still makes the decisions. They also build for smaller advisors, the ones under $100M who most tools skip. And the job itself is about hard engineering work like multi-agent systems, retrieval, keeping the models compliant, and keeping costs down.
+
+Then it clicked for me where the real difficulty is. Getting a model to write text is easy. The hard part is writing something an advisor can actually use and defend. Every number has to come from a real source. It can't cross into giving advice. And you need a record of how the answer was made. Most AI copilots I looked at don't really handle this.
+
+So rather than send in one more application and hope, I built a small version of what the job asks for. advisor-brief takes a question about a client and writes meeting prep the advisor could use. On top of that sits a compliance layer that won't let an uncited number or a piece of advice go out. It's small on purpose, but it works, and it's built around the things I think TIFIN cares about most.
+
+---
+
 ## Why this exists
 
-Large language models get a lot of finance questions wrong, and the wealth industry can't put that in front of a client. The SEC exam priorities for 2025 to 2026 ask firms to **explain how an AI reached a decision**, and an AI-written note that contains an investment recommendation counts as a regulated record. So the hard part of AI in wealth isn't writing text. It's writing text an advisor can stand behind: grounded, cited, and free of anything that crosses into advice.
+Large language models get a lot of finance questions wrong, and the wealth industry can't put that in front of a client. The SEC exam priorities for 2025 to 2026 ask firms to **explain how an AI reached a decision**, and an AI-written note that gives an investment recommendation counts as a regulated record. Getting a model to produce text is easy. The hard part is producing text an advisor can stand behind, where every figure is grounded and cited and nothing crosses into advice.
 
 Most "AI copilots" skip that part. `advisor-brief` is built entirely around it.
 
@@ -43,7 +55,7 @@ Most "AI copilots" skip that part. `advisor-brief` is built entirely around it.
 
 Three checks run on every draft:
 
-1. **Grounding.** Every sentence with a number has to point to a real source we actually pulled. If a number has no source, or points to a source we never retrieved, we take it out. This is how "refuse instead of making things up" becomes something you can measure, not just a claim.
+1. **Grounding.** Every sentence with a number has to point to a real source we actually pulled. If a number has no source, or points to a source we never retrieved, we take it out. This is how "refuse instead of making things up" becomes something you can actually measure.
 2. **Suitability.** If a draft tries to push a client toward something their profile says no to (say, a high-yield fund for a 71-year-old who needs steady income), the code blocks it. Each client has a simple, machine-readable list of what they can and can't hold. The guardrail reads that list through a small read-only bridge (`compliance_mcp.py`). This is the hard part of SEC Reg BI and FINRA 2111.
 3. **A second model as a judge.** It flags wording that reads like a specific recommendation, a promise about future performance, or an opinion stated as fact. Those are the things that raise SEC suitability and recordkeeping concerns (Rule 204-2). Anything it flags goes back for one rewrite, then to a person.
 
