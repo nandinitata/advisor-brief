@@ -1,5 +1,9 @@
 # advisor-brief
 
+**Live demo: https://advisor-brief-lilac.vercel.app**
+
+> On the free tier the demo sleeps after a while, so the first request can take 30 to 60 seconds to wake up. Give it a moment.
+
 **Meeting prep for independent financial advisors. It helps them get ready, and a person always stays in the loop.**
 
 An advisor picks a client and asks what they'd ask before a review meeting ("prep me for the Patels", "rates moved up, what should I flag about their bonds?"). They get back two things they can actually use: a **meeting brief** and a **draft email to the client**. Every number is linked to a real source. Nothing is phrased as a recommendation. A compliance layer refuses to send out an uncited number or any advice that hasn't been reviewed.
