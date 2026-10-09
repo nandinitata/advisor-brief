@@ -109,7 +109,7 @@ This was built to mirror how TIFIN talks about AI for wealth, and to exercise th
 - **Retrieval:** a Chroma vector store with an on-device embedding model (no API key, deploys anywhere), plus a `networkx` ontology graph. The vector "semantic memory" (10-K text) is kept separate from the real-time structured lookups (facts, macro, prices), and the sources run in parallel. Set `AB_LIVE_DATA=1` to fetch macro and prices live, with the cached copy as a fallback.
 - **Agent:** a LangGraph state machine, with Pydantic-typed state contracts and a quick retry at each draft hand-off.
 - **Compliance:** grounding, suitability (through an MCP-style bridge), and a second model as a judge, backed by an append-only, hash-linked audit log.
-- **Models (open-weights only):** two tiers for Inference FinOps. A small Llama (`llama-3.1-8b-instant`) handles planning and judging, and a large one (`llama-3.3-70b-versatile`) handles drafting. There's also a semantic cache for repeat questions. Local Llama 3 via Ollama for dev, Groq for the deployed demo. You can swap models with env vars.
+- **Models (open-weights only):** two tiers for Inference FinOps. A small model (`openai/gpt-oss-20b`) handles planning and judging, and a larger one (`openai/gpt-oss-120b`) handles drafting. There's also a semantic cache for repeat questions. For local dev you can run Llama 3 through Ollama instead. The deployed demo uses Groq. You can swap models with env vars (`AB_GROQ_MODEL`, `AB_GROQ_SMALL_MODEL`).
 - **Backend:** FastAPI. **Frontend:** React and Vite.
 
 ---

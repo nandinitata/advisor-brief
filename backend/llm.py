@@ -40,8 +40,8 @@ _PROVIDER = os.environ.get("AB_LLM_PROVIDER") or ("groq" if os.environ.get("GROQ
 
 OLLAMA_MODEL = os.environ.get("AB_OLLAMA_MODEL", "llama3")
 OLLAMA_SMALL_MODEL = os.environ.get("AB_OLLAMA_SMALL_MODEL", OLLAMA_MODEL)
-GROQ_MODEL = os.environ.get("AB_GROQ_MODEL", "llama-3.3-70b-versatile")
-GROQ_SMALL_MODEL = os.environ.get("AB_GROQ_SMALL_MODEL", "llama-3.1-8b-instant")
+GROQ_MODEL = os.environ.get("AB_GROQ_MODEL", "openai/gpt-oss-120b")
+GROQ_SMALL_MODEL = os.environ.get("AB_GROQ_SMALL_MODEL", "openai/gpt-oss-20b")
 OLLAMA_CTX = int(os.environ.get("AB_OLLAMA_CTX", "8192"))
 
 # the model used per tier, for the configured provider
