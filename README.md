@@ -1,8 +1,8 @@
 # advisor-brief
 
-**Grounded meeting prep for the independent financial advisor — decision support with a human in the loop.**
+**Meeting prep for independent financial advisors. It helps them get ready, and a person always stays in the loop.**
 
-An advisor picks a client, asks what they'd ask before a review meeting ("prep me for the Patels", "rates moved up, what do I flag about their bond sleeve?"), and gets back two things they can actually use: a **meeting brief** and a **client email draft**. Every figure is cited to a real source. Nothing is a recommendation. A compliance layer refuses to ship an uncited number or an unreviewed piece of advice.
+An advisor picks a client and asks what they'd ask before a review meeting ("prep me for the Patels", "rates moved up, what should I flag about their bonds?"). They get back two things they can actually use: a **meeting brief** and a **draft email to the client**. Every number is linked to a real source. Nothing is phrased as a recommendation. A compliance layer refuses to send out an uncited number or any advice that hasn't been reviewed.
 
 It runs on free, public data (SEC EDGAR, FRED, market prices) and open-weights models only.
 
@@ -10,7 +10,7 @@ It runs on free, public data (SEC EDGAR, FRED, market prices) and open-weights m
 
 ## Why this exists
 
-Large language models hallucinate on a large share of finance questions, and the wealth industry can't put that in front of a client. The 2025–2026 SEC exam priorities ask firms to **explain how an AI reached a decision**; an AI-written note that contains an investment recommendation is a regulated record. So the hard part of AI in wealth isn't generating text, it's generating text an advisor can defend: grounded, cited, and free of language that crosses into advice.
+Large language models get a lot of finance questions wrong, and the wealth industry can't put that in front of a client. The SEC exam priorities for 2025 to 2026 ask firms to **explain how an AI reached a decision**, and an AI-written note that contains an investment recommendation counts as a regulated record. So the hard part of AI in wealth isn't writing text. It's writing text an advisor can stand behind: grounded, cited, and free of anything that crosses into advice.
 
 Most "AI copilots" skip that part. `advisor-brief` is built entirely around it.
 
@@ -43,21 +43,21 @@ Most "AI copilots" skip that part. `advisor-brief` is built entirely around it.
 
 Three checks run on every draft:
 
-1. **Deterministic grounding.** Every quantitative sentence must carry a `[source_id]` that exists in the retrieved evidence. A number with no citation, or a citation to something we never retrieved, is pulled. This is what makes "refuse instead of hallucinate" real and measurable rather than a slogan.
-2. **Deterministic suitability.** A draft that steers the client *into* an asset class their profile forbids (high-yield to an income-first 71-year-old, say) is blocked by code. The forbidden classes come from each client's machine-readable suitability policy, read through a read-only **MCP-style bridge** (`compliance_mcp.py`) — the hard half of SEC Reg BI / FINRA 2111.
-3. **LLM-as-judge.** A second model pass flags language that reads as a specific recommendation, a performance guarantee, or an opinion stated as fact — the things that implicate SEC suitability / fiduciary expectations and an advisor's books-and-records duties (Rule 204-2). Flagged lines go back for one revision, then to a human.
+1. **Grounding.** Every sentence with a number has to point to a real source we actually pulled. If a number has no source, or points to a source we never retrieved, we take it out. This is how "refuse instead of making things up" becomes something you can measure, not just a claim.
+2. **Suitability.** If a draft tries to push a client toward something their profile says no to (say, a high-yield fund for a 71-year-old who needs steady income), the code blocks it. Each client has a simple, machine-readable list of what they can and can't hold. The guardrail reads that list through a small read-only bridge (`compliance_mcp.py`). This is the hard part of SEC Reg BI and FINRA 2111.
+3. **A second model as a judge.** It flags wording that reads like a specific recommendation, a promise about future performance, or an opinion stated as fact. Those are the things that raise SEC suitability and recordkeeping concerns (Rule 204-2). Anything it flags goes back for one rewrite, then to a person.
 
-Every request is then written to a **hash-chained, append-only audit log** (`audit.py`): timestamp, client, model versions, and SHA-256 hashes of the prompt and output, each linked to the previous record. Tamper with any past line and `GET /audit/verify` reports where the chain breaks — WORM recordkeeping in spirit (Rule 204-2) without a database.
+Every request is then written to an append-only log (`audit.py`). Each entry has a timestamp, the client, the model versions, and SHA-256 hashes of the prompt and the output. Each entry is linked to the one before it with a hash. If anyone edits a past line, `GET /audit/verify` shows exactly where the chain breaks. It's write-once recordkeeping in spirit (Rule 204-2), without needing a database.
 
-Flip the **compliance layer off** in the UI to see the same model, same evidence, produce a draft the layer would have caught. That contrast is the demo.
+Turn the **compliance layer off** in the UI to watch the same model, with the same evidence, write a draft the layer would have caught. That side-by-side is the demo.
 
-> **Where this is going:** the four architectures this project embodies — and the honest gaps between the demo and a production build at TIFIN — are written up in [`docs/ARCHITECTURE_AND_ROADMAP.md`](docs/ARCHITECTURE_AND_ROADMAP.md). That's the conversation this repo is meant to start.
+> **Where this is going:** the four designs this project is built around, and an honest look at the gaps between this demo and a real production build at TIFIN, are written up in [`docs/ARCHITECTURE_AND_ROADMAP.md`](docs/ARCHITECTURE_AND_ROADMAP.md). That's the conversation this repo is meant to start.
 
 ---
 
 ## Does the layer actually change the output?
 
-`python backend/eval/evaluate.py` drafts a fixed set of advisor questions twice — guardrails off vs on — and scores both.
+Run `python backend/eval/evaluate.py`. It drafts the same set of advisor questions twice, once with the guardrails off and once on, and scores both.
 
 <!-- EVAL:START (filled by eval/evaluate.py) -->
 | guardrails | grounding rate | ungrounded claims | advice/guarantee flags |
@@ -66,7 +66,7 @@ Flip the **compliance layer off** in the UI to see the same model, same evidence
 | ON  | _run eval_ | _run eval_ | _run eval_ |
 <!-- EVAL:END -->
 
-"Grounding rate" is the share of quantitative claims that carry a valid citation. "Ungrounded claims" are figures with no citation or citations to sources that were never retrieved. The run also prints a **FinOps** line — total tokens and illustrative cost for the guarded runs, with planning/judging on the small model tier and drafting/revising on the large one.
+"Grounding rate" is the share of number claims that carry a valid citation. "Ungrounded claims" are figures with no citation, or citations to sources that were never pulled. The run also prints a **FinOps** line: total tokens and a rough cost for the guarded runs, with planning and judging on the small model and drafting and revising on the large one.
 
 ---
 
@@ -76,29 +76,29 @@ This was built to mirror how TIFIN talks about AI for wealth, and to exercise th
 
 | What TIFIN / Vinay Nair emphasizes | Where it shows up here |
 |---|---|
-| "Decision support, not autonomous advice" | The judge blocks/flags advice language; output is advisor-facing, never auto-sent |
-| "Actionable intelligence," not just analysis | Output is a ready meeting brief + client email |
-| The underserved sub-$100M advisor "no one has cracked" | The whole product is aimed there; free to run |
-| Verticalized / ontology-driven finance AI | A holdings→sector→macro-factor knowledge graph drives retrieval |
+| "Decision support, not autonomous advice" | The judge blocks and flags advice language; output is for the advisor, never auto-sent |
+| "Actionable intelligence," not just analysis | Output is a ready meeting brief and client email |
+| The underserved sub-$100M advisor "no one has cracked" | The whole product is aimed there, and it's free to run |
+| Verticalized, ontology-driven finance AI | A holdings→sector→macro-factor knowledge graph drives retrieval |
 | "Productionizing AI" | A deployed, working app with an eval number attached |
 | Multi-agent / ReAct / RAG + knowledge graph | The LangGraph loop |
-| LLM-as-judge eval pipelines | The compliance layer + `eval/evaluate.py` |
-| Governance / guardrails / human-in-the-loop | Citations, calibrated refusal, compliance flags |
-| Deterministic compliance + MCP (§7.2) | Suitability blocking via an MCP-style bridge + a WORM audit chain |
-| State contracts across agent hand-offs (§7.1) | Pydantic `DraftContract` validated at each node, with a localized retry |
-| Tool-calling RAG for high-velocity data (§7.3) | Vector "semantic memory" split from real-time tool calls, fanned out in parallel |
-| Inference FinOps (§7.4) | Semantic cache + small/large model tiering + per-request token/cost metering |
+| LLM-as-judge eval pipelines | The compliance layer plus `eval/evaluate.py` |
+| Governance, guardrails, human in the loop | Citations, calibrated refusal, compliance flags |
+| Deterministic compliance + MCP (§7.2) | Suitability blocking through an MCP-style bridge, plus a write-once audit chain |
+| State contracts across agent hand-offs (§7.1) | A Pydantic `DraftContract` checked at each step, with a quick retry |
+| Tool-calling RAG for fast-moving data (§7.3) | Vector "semantic memory" kept separate from real-time tool calls, run in parallel |
+| Inference FinOps (§7.4) | A semantic cache, small and large model tiers, and per-request token and cost tracking |
 
 ---
 
 ## Stack
 
-- **Data (free, no keys):** SEC EDGAR (10-K text + XBRL facts), FRED macro (public CSV endpoint), market prices via yfinance.
-- **Retrieval:** Chroma vector store with an on-device embedding model (no API key, deploys anywhere) + a `networkx` ontology graph. Vector "semantic memory" (10-K text) is split from real-time structured tool calls (facts/macro/prices), fanned out in parallel; `AB_LIVE_DATA=1` fetches macro/prices live with cached fallback.
-- **Agent:** LangGraph state machine, Pydantic-typed state contracts with a localized retry at each draft hand-off.
-- **Compliance:** deterministic grounding + suitability (via an MCP-style bridge) + an LLM judge, with a hash-chained append-only audit log.
-- **Models (open-weights only):** two tiers for Inference FinOps — a small Llama (`llama-3.1-8b-instant`) for planning/judging, a large one (`llama-3.3-70b-versatile`) for drafting — plus a semantic cache for repeat questions. Local Llama 3 via Ollama for dev; Groq for the deployed demo. Swappable with env vars.
-- **Backend:** FastAPI. **Frontend:** React + Vite.
+- **Data (free, no keys):** SEC EDGAR (10-K text and XBRL facts), FRED macro (public CSV endpoint), market prices via yfinance.
+- **Retrieval:** a Chroma vector store with an on-device embedding model (no API key, deploys anywhere), plus a `networkx` ontology graph. The vector "semantic memory" (10-K text) is kept separate from the real-time structured lookups (facts, macro, prices), and the sources run in parallel. Set `AB_LIVE_DATA=1` to fetch macro and prices live, with the cached copy as a fallback.
+- **Agent:** a LangGraph state machine, with Pydantic-typed state contracts and a quick retry at each draft hand-off.
+- **Compliance:** grounding, suitability (through an MCP-style bridge), and a second model as a judge, backed by an append-only, hash-linked audit log.
+- **Models (open-weights only):** two tiers for Inference FinOps. A small Llama (`llama-3.1-8b-instant`) handles planning and judging, and a large one (`llama-3.3-70b-versatile`) handles drafting. There's also a semantic cache for repeat questions. Local Llama 3 via Ollama for dev, Groq for the deployed demo. You can swap models with env vars.
+- **Backend:** FastAPI. **Frontend:** React and Vite.
 
 ---
 
@@ -109,7 +109,7 @@ This was built to mirror how TIFIN talks about AI for wealth, and to exercise th
 cd backend
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
-python ingest.py                 # pulls filings/facts/macro/prices (one time, ~8 min)
+python ingest.py                 # pulls filings/facts/macro/prices (one time, about 8 min)
 
 # generation: either local Ollama...
 ollama pull llama3
@@ -124,17 +124,12 @@ npm run dev                      # http://localhost:3000
 
 ## Deploy
 
-The live demo is two pieces: the **FastAPI backend on [Render](https://render.com)**
-and the **React frontend on [Vercel](https://vercel.com)**.
+The live demo has two pieces: the **FastAPI backend on [Render](https://render.com)** and the **React frontend on [Vercel](https://vercel.com)**.
 
-- **Backend (Render):** New + → *Blueprint* → pick this repo; Render reads `render.yaml`.
-  Add a free `GROQ_API_KEY` ([console.groq.com/keys](https://console.groq.com/keys)) when
-  prompted. The Chroma store is committed, so there's no ingest step. Health check: `/health`.
-- **Frontend (Vercel):** import the repo, set **Root Directory** to `frontend`, and add an
-  env var `VITE_API_URL` = your Render URL. Vercel auto-detects Vite (`npm run build` → `dist/`).
+- **Backend (Render):** click New +, then Blueprint, then pick this repo. Render reads `render.yaml`. Add a free `GROQ_API_KEY` ([console.groq.com/keys](https://console.groq.com/keys)) when prompted. The Chroma store is committed, so there's no ingest step. Health check: `/health`.
+- **Frontend (Vercel):** import the repo, set the **Root Directory** to `frontend`, and add an env var `VITE_API_URL` set to your Render URL. Vercel detects Vite on its own (`npm run build` produces `dist/`).
 
-The backend is a stateful container (Chroma + on-device embeddings), so it runs on Render, not
-Vercel's serverless functions. CORS allows any `*.vercel.app` origin out of the box.
+The backend keeps state (Chroma plus on-device embeddings), so it runs on Render, not on Vercel's serverless functions. CORS allows any `*.vercel.app` origin out of the box.
 
 ## Tests
 
@@ -148,7 +143,7 @@ The tests cover the deterministic pieces the product's trust depends on: the gro
 
 ## Honest limitations
 
-- The demo universe is ~11 large, well-known holdings so the filings are rich and recognizable. It is not all of EDGAR.
-- Client portfolios are synthetic. No real client data, auth, or custody integration.
-- 10-K table/numeric reasoning is handled by pulling exact XBRL facts, not by reading tables out of the HTML — that's a deliberate scope choice, and the hardest open problem in the space.
-- This is a prototype and decision-support tool. It is not investment advice.
+- The demo universe is about 11 large, well-known holdings, so the filings are rich and easy to recognize. It is not all of EDGAR.
+- Client portfolios are made up. There's no real client data, no auth, and no custody integration.
+- Numbers from 10-K filings come from pulling exact XBRL facts, not from reading tables out of the HTML. That's a deliberate choice, and it's the hardest open problem in this space.
+- This is a prototype and a decision-support tool. It is not investment advice.
